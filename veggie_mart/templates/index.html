@@ -10,13 +10,13 @@
         <div> Add a New Product:
             <form action="{{url_for('add')}}" method="POST">
                 Name:
-                <input type="text" name="name"><br>
+                <input type="text" name="name" required><br>
                 Categ:
-                <input type="text" name="categories"><br>
+                <input type="text" name="categories" required><br>
                 Descr:
-                <input type="text" name="description">
+                <input type="text" name="description" required>
                 Price(curr mrp):
-                <input type="text" name="price"><br><br>
+                <input type="text" name="price" required><br><br>
                 <input type="submit" value="Add Item" class="button">
             </form>
         </div>
