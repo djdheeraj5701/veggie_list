@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Veggie List</title>
+    </head>
+
+    <body>
+        <h1>List: </h1>
+        <div> Add a New Product:
+            <form action="{{url_for('add')}}" method="POST">
+                Name:
+                <input type="text" name="name"><br>
+                Categ:
+                <input type="text" name="categories"><br>
+                Descr:
+                <input type="text" name="description">
+                Price(curr mrp):
+                <input type="text" name="price"><br><br>
+                <input type="submit" value="Add Item" class="button">
+            </form>
+        </div>
+        <div>
+            <h2> Products: </h2>
+            <ul>
+                {% for i in products %}
+                <li style="font-size: medium;" class="mark">
+                    {{i.item_id}}=>{{i.name}}
+                    <br>{{i.categories}} : {{i.description}}
+                    <br>{{i.price_curr}} <strike> {{i.price_mrp}} </strike><br>
+                    <a href="{{url_for('delete', item_id=i.item_id)}}">
+                    Delete
+                    </a><br>
+                    <form action="{{url_for('update', item_id=i.item_id)}}" method="POST">
+                        <input type="text" name="price" required>
+                        <input type="submit" value="Update" class="button">
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
